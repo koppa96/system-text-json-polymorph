@@ -13,11 +13,11 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>PolymorphExtensions.System.Text.Json</PackageId>
     <Product>PolymorphExtensions.System.Text.Json</Product>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile></DocumentationFile>
+    <DocumentationFile>C:\Users\Peti\source\repos\System.Text.Json.Polymorph\System.Text.Json.Polymorph\System.Text.Json.Polymorph.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

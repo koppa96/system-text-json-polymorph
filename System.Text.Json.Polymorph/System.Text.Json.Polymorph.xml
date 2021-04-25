@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.Text.Json.Polymorph</name>
+    </assembly>
+    <members>
+        <member name="T:System.Text.Json.Polymorph.Attributes.JsonBaseClassAttribute">
+            <summary>
+            Marks base classes of inheritance hierarchies.
+            </summary>
+        </member>
+        <member name="P:System.Text.Json.Polymorph.Attributes.JsonBaseClassAttribute.DiscriminatorName">
+            <summary>
+            Defines the name of the Discriminator property that will be included in the serialized JSON for the subclasses of the marked class.
+            If no <see cref="P:System.Text.Json.Polymorph.Attributes.JsonBaseClassAttribute.DiscriminatorName"/> is specified, the value of <see cref="F:System.Text.Json.Polymorph.JsonConstants.DefaultDiscriminator"/> will be used.
+            </summary>
+        </member>
+        <member name="T:System.Text.Json.Polymorph.Attributes.JsonSubClassAttribute">
+            <summary>
+            Marks subclasses in inheritance hierarchies.
+            </summary>
+        </member>
+        <member name="P:System.Text.Json.Polymorph.Attributes.JsonSubClassAttribute.DiscriminatorValue">
+            <summary>
+            Defines the value of the Discriminator property that will be included in the serialized JSON representation of the class marked by this Attribute.
+            If no <see cref="P:System.Text.Json.Polymorph.Attributes.JsonSubClassAttribute.DiscriminatorValue"/> is specified the name of the target class will be used.
+            </summary>
+        </member>
+        <member name="T:System.Text.Json.Polymorph.Converters.DiscriminatorConverter`1">
+            <summary>
+            Appends a discriminator property to the serialized json based on the <see cref="T:System.Text.Json.Polymorph.Attributes.JsonSubClassAttribute"/> on the class,
+            and deserializes polymorphic types with the help of it.
+            </summary>
+            <typeparam name="TBaseOrSubClass">The type of the class that the converter can convert</typeparam>
+        </member>
+        <member name="M:System.Text.Json.Polymorph.Extensions.JsonOptionsExtensions.AddDiscriminatorConverterForHierarchy``1(System.Text.Json.JsonSerializerOptions,System.String,System.Reflection.Assembly[])">
+            <summary>
+            Adds the necessary converters to convert the subclasses of <typeparamref name="TBaseClass"/> with the configured discriminators.
+            </summary>
+            <typeparam name="TBaseClass">The root type of the class hierarchy</typeparam>
+            <param name="options">The <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance to add the converters to</param>
+            <param name="discriminatorPropertyName">The name of the discriminator property that is going to be serialized to the subclasses' JSON representation</param>
+            <param name="assembliesToSearch">Assemblies that will be searched for subclasses of <typeparamref name="TBaseClass"/> with <see cref="T:System.Text.Json.Polymorph.Attributes.JsonSubClassAttribute"/>.
+            The Assembly of <typeparamref name="TBaseClass"/> is automatically included to the searched assemblies.</param>
+        </member>
+        <member name="M:System.Text.Json.Polymorph.Extensions.JsonOptionsExtensions.AddDiscriminatorConverters(System.Text.Json.JsonSerializerOptions,System.Reflection.Assembly[])">
+            <summary>
+            Adds the necessary converters to convert the subclasses of all types with the attribute <see cref="T:System.Text.Json.Polymorph.Attributes.JsonBaseClassAttribute"/> in the given assemblies.
+            </summary>
+            <param name="options">The <see cref="T:System.Text.Json.JsonSerializerOptions"/> instance to add the converters to</param>
+            <param name="assemblies">Assemblies that will be searched for classes with <see cref="T:System.Text.Json.Polymorph.Attributes.JsonBaseClassAttribute"/>
+            and subclasses with <see cref="T:System.Text.Json.Polymorph.Attributes.JsonSubClassAttribute"/></param>
+        </member>
+        <member name="F:System.Text.Json.Polymorph.JsonConstants.DefaultDiscriminator">
+            <summary>
+            The name of the Discriminator property created on serialized subclasses by default.
+            </summary>
+        </member>
+    </members>
+</doc>
