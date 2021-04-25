@@ -3,6 +3,6 @@
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public sealed class JsonBaseClassAttribute : Attribute
     {
-        public string DiscriminatorPropertyName { get; init; }
+        public string DiscriminatorName { get; init; }
     }
 }

@@ -26,7 +26,7 @@ namespace System.Text.Json.Polymorph.Converters
                 .SelectMany(x => x.GetTypes())
                 .Where(x => x.IsAssignableTo(typeof(TBaseOrSubClass)) &&
                             x.GetCustomAttribute<JsonSubClassAttribute>() != null)
-                .ToDictionary(x => x.GetCustomAttribute<JsonSubClassAttribute>()!.Discriminator ?? x.Name);
+                .ToDictionary(x => x.GetCustomAttribute<JsonSubClassAttribute>()!.DiscriminatorValue ?? x.Name);
         }
 
         public override TBaseOrSubClass Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -64,7 +64,7 @@ namespace System.Text.Json.Polymorph.Converters
             writer.WriteStartObject();
 
             var valueType = value.GetType();
-            var discriminatorValue = valueType.GetCustomAttribute<JsonSubClassAttribute>()?.Discriminator ?? valueType.Name;
+            var discriminatorValue = valueType.GetCustomAttribute<JsonSubClassAttribute>()?.DiscriminatorValue ?? valueType.Name;
             writer.WriteString(discriminatorPropertyName, discriminatorValue);
 
             foreach (var property in document.RootElement.EnumerateObject())

@@ -40,7 +40,7 @@ namespace System.Text.Json.Polymorph.Extensions
                     .Invoke(null, new object[]
                     {
                         options,
-                        baseClass.GetCustomAttribute<JsonBaseClassAttribute>()!.DiscriminatorPropertyName ?? JsonConstants.DefaultDiscriminator,
+                        baseClass.GetCustomAttribute<JsonBaseClassAttribute>()!.DiscriminatorName ?? JsonConstants.DefaultDiscriminator,
                         assemblies
                     });
             }

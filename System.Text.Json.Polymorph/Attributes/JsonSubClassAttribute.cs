@@ -3,7 +3,7 @@
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public sealed class JsonSubClassAttribute : Attribute
     {
-        public string Discriminator { get; init; }
+        public string DiscriminatorValue { get; init; }
 
     }
 }
