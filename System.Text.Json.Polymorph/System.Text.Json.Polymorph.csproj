@@ -13,6 +13,11 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageId>PolymorphExtensions.System.Text.Json</PackageId>
     <Product>PolymorphExtensions.System.Text.Json</Product>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
 </Project>
