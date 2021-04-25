@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>koppa96</Authors>
+    <Company />
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Utilities for serializing and deserializing type hierarchies with System.Text.Json while keeping type information.</Description>
+    <RepositoryUrl>https://github.com/koppa96/system-text-json-polymorph</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/koppa96/system-text-json-polymorph</PackageProjectUrl>
+    <PackageTags>Json, JSON, Inheritance, Polymorphysm</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>PolymorphExtensions.System.Text.Json</PackageId>
+    <Product>PolymorphExtensions.System.Text.Json</Product>
   </PropertyGroup>
 
 </Project>
