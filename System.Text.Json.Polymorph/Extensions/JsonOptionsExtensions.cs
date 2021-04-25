@@ -8,6 +8,14 @@ namespace System.Text.Json.Polymorph.Extensions
 {
     public static class JsonOptionsExtensions
     {
+        /// <summary>
+        /// Adds the necessary converters to convert the subclasses of <typeparamref name="TBaseClass"/> with the configured discriminators.
+        /// </summary>
+        /// <typeparam name="TBaseClass">The root type of the class hierarchy</typeparam>
+        /// <param name="options">The <see cref="JsonSerializerOptions"/> instance to add the converters to</param>
+        /// <param name="discriminatorPropertyName">The name of the discriminator property that is going to be serialized to the subclasses' JSON representation</param>
+        /// <param name="assembliesToSearch">Assemblies that will be searched for subclasses of <typeparamref name="TBaseClass"/> with <see cref="JsonSubClassAttribute"/>.
+        /// The Assembly of <typeparamref name="TBaseClass"/> is automatically included to the searched assemblies.</param>
         public static void AddDiscriminatorConverterForHierarchy<TBaseClass>(
             this JsonSerializerOptions options,
             string discriminatorPropertyName = JsonConstants.DefaultDiscriminator,
@@ -26,6 +34,12 @@ namespace System.Text.Json.Polymorph.Extensions
             }
         }
 
+        /// <summary>
+        /// Adds the necessary converters to convert the subclasses of all types with the attribute <see cref="JsonBaseClassAttribute"/> in the given assemblies.
+        /// </summary>
+        /// <param name="options">The <see cref="JsonSerializerOptions"/> instance to add the converters to</param>
+        /// <param name="assemblies">Assemblies that will be searched for classes with <see cref="JsonBaseClassAttribute"/>
+        /// and subclasses with <see cref="JsonSubClassAttribute"/></param>
         public static void AddDiscriminatorConverters(this JsonSerializerOptions options,
             params Assembly[] assemblies)
         {
