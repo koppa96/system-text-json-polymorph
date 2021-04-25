@@ -99,7 +99,7 @@ public class DiscriminatorTestController : ControllerBase
     [HttpGet]
     public BaseDto Get()
     {
-        return new SubDto2 { SubDtoProperty2 = 1 };
+        return new SubDto2 { BaseDtoProperty = 0, SubDtoProperty2 = 1 };
     }
     
     [HttpPost]
@@ -117,6 +117,7 @@ If we send a GET request to this Controller we will get the following response:
 ```json
 {
   "myAwesomeDiscriminator": "Sub2",
+  "baseDtoProperty": 0,
   "subDtoProperty2": 1
 }
 ```
@@ -125,6 +126,7 @@ If we send a POST request to this controller, with the content below, it is goin
 ```json
 {
   "myAwesomeDiscriminator": "Sub1",
+  "baseDtoProperty": 1,
   "subDtoProperty1": "foo"
 }
 ```
