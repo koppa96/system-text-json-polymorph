@@ -12,7 +12,7 @@ namespace System.Text.Json.Polymorph.Converters
     /// and deserializes polymorphic types with the help of it.
     /// </summary>
     /// <typeparam name="TBaseOrSubClass">The type of the class that the converter can convert</typeparam>
-    public class DiscriminatorConverter<TBaseOrSubClass> : JsonConverter<TBaseOrSubClass>
+    internal sealed class DiscriminatorConverter<TBaseOrSubClass> : JsonConverter<TBaseOrSubClass>
     {
         private readonly string discriminatorPropertyName;
         private readonly Dictionary<string, Type> subTypes;
@@ -38,7 +38,7 @@ namespace System.Text.Json.Polymorph.Converters
             var objectType = subTypes.Single(x => x.Key == discriminatorValue).Value;
 
             using var stream = new MemoryStream();
-            var writer = new Utf8JsonWriter(stream);
+            using var writer = new Utf8JsonWriter(stream);
             document.WriteTo(writer);
             writer.Flush();
             var jsonString = Encoding.UTF8.GetString(stream.ToArray());
